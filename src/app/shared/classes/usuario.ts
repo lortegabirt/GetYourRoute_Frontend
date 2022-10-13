@@ -1,10 +1,10 @@
 export class Usuario {
-  public nombre: string;
-  public contrasegna: string;
+  public name: string;
+  public pass: string;
 
 
   constructor() {
-    this.nombre = '';
-    this.contrasegna = '';
+    this.name = '';
+    this.pass = '';
   }
 }

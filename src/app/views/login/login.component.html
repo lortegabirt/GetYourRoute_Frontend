@@ -2,16 +2,15 @@
   <form (ngSubmit)="submit()" #usuarioForm="ngForm">
     <div class="form-group">
       <label for="usuario">Nombre:</label>
-      <input type="text" [(ngModel)]="usuario.nombre"
-        name="nombre" #nombre="ngModel" required>
+      <input type="text" [(ngModel)]="usuario.name" name="nombre" #nombre="ngModel" required>
       <div *ngIf="nombre.invalid && nombre.dirty" class="alert">
         <div [attr.required]*ngIf="nombre.errors?.required">Campo requerido</div>
       </div>
     </div>
     <div class="form-group">
       <label for="contrasegna">Contraseña:</label>
-      <input type="password" [(ngModel)]="usuario.contrasegna"
-        name="contrasegna" #contrasegna="ngModel" required minlength="4">
+      <input type="password" [(ngModel)]="usuario.pass" name="contrasegna" #contrasegna="ngModel" required
+        minlength="4">
       <div *ngIf="contrasegna.invalid && contrasegna.dirty" class="alert">
         <div [attr.required]*ngIf="contrasegna.errors?.required">Campo requerido</div>
         <div [attr.minlength]*ngIf="contrasegna.errors?.minlength">Mínimo 4 caracteres</div>
