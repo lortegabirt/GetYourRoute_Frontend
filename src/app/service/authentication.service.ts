@@ -18,7 +18,6 @@ export class AuthenticationService {
 
   public login({email, password}: {email: string, password: string}): Observable<Session | null> {
     return this.authenticationHttp.login(email, password).pipe(
-      delay(5000),
       map(response => ({...response, ...jwtDecode(response.token)}) as Jwt),
       map(jwt => new Session(jwt)),
       tap(session => localStorage.setItem('session', JSON.stringify(session))),
