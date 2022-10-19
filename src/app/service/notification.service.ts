@@ -7,7 +7,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class NotificationService {
 
   constructor(
-      public snackBar: MatSnackBar,
+      private snackBar: MatSnackBar,
       private zone: NgZone) { }
 
   showSuccess(message: string): void {

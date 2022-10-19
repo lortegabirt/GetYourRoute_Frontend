@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import {Jwt, Session} from "../shared/model/Session.model";
 import {AuthenticationHttpService} from "./authentication.http.service";
 import {Router} from "@angular/router";
+import {User} from "../user/model/User.model";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class AuthenticationService {
       tap(session => this._session.next(session)),
       concatMap(_ => this._session.asObservable())
     );
+  }
+
+  public signup(user: User) {
+    return this.authenticationHttp.signup(user);
   }
 
   public logout() {
