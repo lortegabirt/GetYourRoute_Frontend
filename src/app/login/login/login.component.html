@@ -1,6 +1,27 @@
-<div class="m-5 h-full">
-<mat-card class="login-card h-full">
-  <mat-card-title>card title</mat-card-title>
-  <mat-card-content>Login form</mat-card-content>
-</mat-card>
+<div class="m-5 h-full flex justify-center">
+  <mat-card class="login-card h-fit w-fit">
+    <mat-card-title class="text-center">Login</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm" class="flex justify-center">
+        <div class="w-full">
+          <mat-form-field class="w-full">
+            <mat-label>email</mat-label>
+            <input type="text" matInput formControlName="email">
+          </mat-form-field>
+          <mat-form-field class="w-full">
+            <mat-label>password</mat-label>
+            <input type="password" matInput formControlName="password">
+          </mat-form-field>
+          <button mat-flat-button
+                  color="accent"
+                  class="w-full"
+                  [disabled]="loading"
+                  (click)="onLogin()">
+            Login
+          </button>
+          <mat-progress-bar class="mt-1" mode="indeterminate" color="accent" *ngIf="loading"></mat-progress-bar>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -7,6 +7,7 @@ import {MapComponent} from './map/map.component';
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutModule} from "./layout/layout.module";
+import {globalErrorHandlerProvider, httpInterceptorProviders} from "./middleware";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import {LayoutModule} from "./layout/layout.module";
     BrowserAnimationsModule,
     LayoutModule,
   ],
-  providers: [],
+  providers: [globalErrorHandlerProvider, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
