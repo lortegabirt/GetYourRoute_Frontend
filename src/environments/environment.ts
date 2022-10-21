@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backend: {
+    baseUrl: 'http://localhost:8080/',
+    endpoints: {
+      login: 'api/v0/authentication/login',
+      signup: 'api/v0/authentication/signup'
+    }
+  }
 };
 
 /*

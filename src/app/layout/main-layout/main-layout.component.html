@@ -1,0 +1,19 @@
+<div class="h-screen back">
+  <mat-toolbar color="primary" class="sticky top-0 z-50">
+    <div class="w-full">
+      <span>Get Your Route</span>
+      <button mat-button class="float-right"
+              *ngIf="!!(session$ | async)"
+              (click)="onLogout()">logout</button>
+      <button mat-button class="float-right"
+              *ngIf="!(session$ | async)"
+              (click)="onLogin()">login</button>
+    </div>
+  </mat-toolbar>
+  <div class="min-h-screen relative">
+    <router-outlet></router-outlet>
+    <footer>
+      <span>footer</span>
+    </footer>
+  </div>
+</div>

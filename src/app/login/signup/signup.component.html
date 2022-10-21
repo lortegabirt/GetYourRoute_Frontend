@@ -1,0 +1,35 @@
+<div class="m-5 flex justify-center">
+  <mat-card class="login-card h-fit w-[500px] min-w-[300px]">
+    <mat-card-title class="text-center">Signup</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="signup" class="flex justify-center">
+        <div class="w-full">
+          <mat-form-field class="w-full">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput formControlName="name">
+          </mat-form-field>
+          <mat-form-field class="w-full">
+            <mat-label>Last name</mat-label>
+            <input type="text" matInput formControlName="lastName">
+          </mat-form-field>
+          <mat-form-field class="w-full">
+            <mat-label>email</mat-label>
+            <input type="text" matInput formControlName="email">
+          </mat-form-field>
+          <mat-form-field class="w-full">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+          </mat-form-field>
+          <button mat-flat-button
+                  color="accent"
+                  class="w-full"
+                  [disabled]="loading"
+                  (click)="onSignup()">
+            Signup
+          </button>
+          <mat-progress-bar class="mt-1" mode="indeterminate" color="accent" *ngIf="loading"></mat-progress-bar>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
