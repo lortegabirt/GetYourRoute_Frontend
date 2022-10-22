@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, concatMap, delay, map, Observable, tap, timeout} from "rxjs";
 import jwtDecode from "jwt-decode";
-import {Jwt, Session} from "../shared/model/Session.model";
+import {Jwt, Session} from "../authentication/model/Session.model";
 import {AuthenticationHttpService} from "./authentication.http.service";
 import {Router} from "@angular/router";
 import {User} from "../user/model/User.model";

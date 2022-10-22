@@ -8,11 +8,13 @@ import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutModule} from "./layout/layout.module";
 import {globalErrorHandlerProvider, httpInterceptorProviders} from "./middleware";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

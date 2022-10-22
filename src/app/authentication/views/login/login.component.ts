@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {AuthenticationService} from "../../service/authentication.service";
+import {AuthenticationService} from "../../../service/authentication.service";
 import {take} from "rxjs";
-import {NotificationService} from "../../service/notification.service";
+import {NotificationService} from "../../../service/notification.service";
 
 @Component({
   selector: 'app-login',
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   loading = false;
 
   constructor(private formBuilder: FormBuilder,
+              private notificationService: NotificationService,
               private authenticationService: AuthenticationService) {
   }
 
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.loginForm.value as { email: string, password: string })
       .pipe(take(1))
       .subscribe({
-        next: _ => this.loading = false,
+        next: session => {this.loading = false; this.notificationService.showSuccess('Hello ' + session.subjectName)},
         error: err => {this.loading = false; throw err},
       });
   }

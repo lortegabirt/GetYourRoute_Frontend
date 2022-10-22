@@ -1,7 +1,12 @@
 <div class="h-screen back">
   <mat-toolbar color="primary" class="sticky top-0 z-50">
     <div class="w-full">
-      <span>Get Your Route</span>
+      <a [routerLink]="['']">
+        <img src="assets/logo-written.png" alt="logo" class="h-10 inline-block mr-3 invert">
+      </a>
+      <nav class="inline-block ml-5 space-x-4" *ngIf="!!(session$ | async)">
+        <a class="hover:underline font-sans" [routerLink]="['', 'itineraries']">Itineraries</a>
+      </nav>
       <button mat-button class="float-right"
               *ngIf="!!(session$ | async)"
               (click)="onLogout()">logout</button>

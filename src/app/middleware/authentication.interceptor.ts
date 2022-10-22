@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {concatMap, defaultIfEmpty, filter, map, Observable, take, tap} from "rxjs";
 import {AuthenticationService} from "../service/authentication.service";
-import {Session} from "../shared/model/Session.model";
+import {Session} from "../authentication/model/Session.model";
 
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {
@@ -15,7 +15,6 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       filter(session => session !== null),
       map(session => this.attachToken(session, req)),
       defaultIfEmpty(req),
-      tap(req => console.log(req)),
       concatMap(req => next.handle(req))
     );
   }

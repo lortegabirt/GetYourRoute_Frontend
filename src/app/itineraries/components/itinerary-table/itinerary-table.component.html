@@ -1,0 +1,39 @@
+<table mat-table [dataSource]="tableDataSource" class="w-full">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let element"> {{element.description | trim}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="beginDate">
+    <th mat-header-cell *matHeaderCellDef>Begin date</th>
+    <td mat-cell *matCellDef="let element"> {{element.beginDate | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="endDate">
+    <th mat-header-cell *matHeaderCellDef>End date</th>
+    <td mat-cell *matCellDef="let element"> {{element.endDate | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <div class="float-right">
+        <app-detail-mini-fab (click)="onDetail(element)" class="mr-1"></app-detail-mini-fab>
+        <app-edit-mini-fab (click)="onEdit(element)" class="mr-1"></app-edit-mini-fab>
+        <app-delete-mini-fab (click)="onDelete(element)"></app-delete-mini-fab>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[10]"
+               showFirstLastButtons>
+</mat-paginator>
