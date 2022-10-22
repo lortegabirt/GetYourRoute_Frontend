@@ -1,10 +1,12 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-edit-mini-fab',
-  templateUrl: './edit-mini-fab.component.html',
+  template:`
+    <button mat-mini-fab color="green">
+      <mat-icon>edit</mat-icon>
+    </button>
+  `,
   styleUrls: ['./edit-mini-fab.component.scss']
 })
-export class EditMiniFabComponent {
-  @Output() click = new EventEmitter();
-}
+export class EditMiniFabComponent {}

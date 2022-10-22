@@ -1,10 +1,12 @@
-import {Component, EventEmitter} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-delete-mini-fab',
-  templateUrl: './delete-mini-fab.component.html',
+  template: `
+    <button mat-mini-fab color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  `,
   styleUrls: ['./delete-mini-fab.component.scss']
 })
-export class DeleteMiniFabComponent {
-  click = new EventEmitter();
-}
+export class DeleteMiniFabComponent {}
