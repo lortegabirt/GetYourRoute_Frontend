@@ -12,6 +12,8 @@ import {DeleteMiniFabComponent} from "./component/delete-mini-fab/delete-mini-fa
 import {DetailMiniFabComponent} from "./component/detail-mini-fab/detail-mini-fab.component";
 import {EditMiniFabComponent} from "./component/edit-mini-fab/edit-mini-fab.component";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatDialogModule} from "@angular/material/dialog";
+import {AlertDialogComponent} from "./component/alert-dialog/alert-dialog.component";
 
 
 
@@ -20,6 +22,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     DeleteMiniFabComponent,
     DetailMiniFabComponent,
     EditMiniFabComponent,
+    AlertDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +35,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatTableModule,
     MatIconModule,
     MatPaginatorModule,
+    MatDialogModule,
   ],
   exports: [
     MatToolbarModule,
@@ -46,6 +50,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     DetailMiniFabComponent,
     EditMiniFabComponent,
     MatPaginatorModule,
+    MatDialogModule,
+    AlertDialogComponent,
   ]
 })
 export class SharedMaterialModule { }

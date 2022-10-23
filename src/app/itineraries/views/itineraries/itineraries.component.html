@@ -1,3 +1,6 @@
 <main class="p-5">
-<app-itinerary-table [dataSource]="itineraries$ | async" class="drop-shadow"></app-itinerary-table>
+<app-itinerary-table
+  [dataSource]="itineraries$ | async"
+  (delete)="onDelete($event)"
+  class="drop-shadow"></app-itinerary-table>
 </main>

@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TrimPipe implements PipeTransform {
 
   transform(text: string, maxLength = 20): string {
-    if (text.length <= 20) {
+    if (!text || text.length <= 20) {
       return text;
     }
     return text.trim().substring(0, 20) + '...';

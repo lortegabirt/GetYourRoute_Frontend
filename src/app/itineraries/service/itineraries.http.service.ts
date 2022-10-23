@@ -18,4 +18,8 @@ export class ItinerariesHttpService {
     return this.http.get<Itinerary[]>(`${this.baseUrl}${this.path}`);
   }
 
+  public deleteItinerary(itineraryId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}${this.path}${itineraryId}`)
+  }
+
 }

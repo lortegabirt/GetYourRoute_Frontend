@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { TrimPipe } from './pipe/trim.pipe';
-
+import {TrimPipe} from './pipe/trim.pipe';
+import {AuthenticatedDirective} from './directives/authenticated.directive';
 
 
 @NgModule({
   declarations: [
-    TrimPipe
+    TrimPipe,
+    AuthenticatedDirective,
   ],
   imports: [
     CommonModule,
@@ -25,6 +26,7 @@ import { TrimPipe } from './pipe/trim.pipe';
     HttpClientModule,
     RouterLinkWithHref,
     TrimPipe,
+    AuthenticatedDirective,
   ]
 })
 export class SharedModule { }

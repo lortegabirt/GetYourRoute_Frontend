@@ -4,7 +4,7 @@
       <a [routerLink]="['']">
         <img src="assets/logo-written.png" alt="logo" class="h-10 inline-block mr-3 invert">
       </a>
-      <nav class="inline-block ml-5 space-x-4" *ngIf="!!(session$ | async)">
+      <nav class="inline-block ml-5 space-x-4" *appAuthenticated>
         <a class="hover:underline font-sans" [routerLink]="['', 'itineraries']">Itineraries</a>
       </nav>
       <button mat-button class="float-right"

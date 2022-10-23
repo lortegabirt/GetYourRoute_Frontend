@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Itinerary} from "../../model/Itinerary.model";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -13,6 +13,7 @@ export class ItineraryTableComponent implements AfterViewInit {
   @Input() set dataSource(itineraries: Itinerary[]) {
     this.tableDataSource.data = itineraries;
   }
+  @Output() delete = new EventEmitter<Itinerary>();
   tableDataSource = new MatTableDataSource<Itinerary>();
   displayedColumns = ['name', 'description', 'beginDate', 'endDate', 'actions'];
 
@@ -27,7 +28,7 @@ export class ItineraryTableComponent implements AfterViewInit {
   }
 
   onDelete(itinerary: Itinerary) {
-    console.log('delete ' + itinerary.id)
+    this.delete.emit(itinerary);
   }
 
   onEdit(itinerary: Itinerary) {

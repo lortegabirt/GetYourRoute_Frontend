@@ -7,9 +7,9 @@ export const environment = {
   backend: {
     baseUrl: 'http://localhost:8080/',
     endpoints: {
-      login: 'api/v0/authentication/login',
-      signup: 'api/v0/authentication/signup',
-      itineraries: 'api/v0/itinerarys',
+      login: 'api/v0/authentication/login/',
+      signup: 'api/v0/authentication/signup/',
+      itineraries: 'api/v0/itinerarys/',
     }
   }
 };
