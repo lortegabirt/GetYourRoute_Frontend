@@ -14,6 +14,8 @@ export class ItineraryTableComponent implements AfterViewInit {
     this.tableDataSource.data = itineraries;
   }
   @Output() delete = new EventEmitter<Itinerary>();
+  @Output() detail = new EventEmitter<Itinerary>();
+
   tableDataSource = new MatTableDataSource<Itinerary>();
   displayedColumns = ['name', 'description', 'beginDate', 'endDate', 'actions'];
 
@@ -24,7 +26,7 @@ export class ItineraryTableComponent implements AfterViewInit {
   }
 
   onDetail(itinerary: Itinerary) {
-    console.log('detail ' + itinerary.id);
+    this.detail.emit(itinerary);
   }
 
   onDelete(itinerary: Itinerary) {

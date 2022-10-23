@@ -5,7 +5,9 @@ import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
-    MainLayoutComponent
+    MainLayoutComponent,
+  ],
+  exports: [
   ],
   imports: [
     SharedModule,

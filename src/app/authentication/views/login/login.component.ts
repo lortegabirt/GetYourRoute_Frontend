@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../service/authentication.service";
 import {take} from "rxjs";
 import {NotificationService} from "../../../service/notification.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private notificationService: NotificationService,
+              private router: Router,
               private authenticationService: AuthenticationService) {
   }
 
@@ -31,7 +33,11 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.loginForm.value as { email: string, password: string })
       .pipe(take(1))
       .subscribe({
-        next: session => {this.loading = false; this.notificationService.showSuccess('Hello ' + session.subjectName)},
+        next: session => {
+          this.loading = false;
+          this.notificationService.showSuccess('Welcome ' + session.subjectName);
+          this.router.navigate(['itineraries'])
+        },
         error: err => {this.loading = false; throw err},
       });
   }

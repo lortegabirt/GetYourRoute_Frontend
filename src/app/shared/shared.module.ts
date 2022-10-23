@@ -5,12 +5,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {TrimPipe} from './pipe/trim.pipe';
 import {AuthenticatedDirective} from './directives/authenticated.directive';
+import {ViewWrapperComponent} from "./view-wrapper/view-wrapper.component";
 
 
 @NgModule({
   declarations: [
     TrimPipe,
     AuthenticatedDirective,
+    ViewWrapperComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import {AuthenticatedDirective} from './directives/authenticated.directive';
     RouterLinkWithHref,
     TrimPipe,
     AuthenticatedDirective,
+    ViewWrapperComponent,
   ]
 })
 export class SharedModule { }
