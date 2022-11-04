@@ -9,19 +9,23 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {SharedModule} from "../shared/shared.module";
 import { ItineraryDetailComponent } from './views/itinerary-detail/itinerary-detail.component';
+import {MapModule} from "../map/map.module";
+import { ItineraryMapComponent } from './components/itinerary-map/itinerary-map.component';
 
 
 @NgModule({
   declarations: [
     ItineraryTableComponent,
     ItinerariesComponent,
-    ItineraryDetailComponent
+    ItineraryDetailComponent,
+    ItineraryMapComponent
   ],
-  imports: [
-    CommonModule,
-    ItinerariesRoutingModule,
-    SharedMaterialModule,
-    SharedModule,
-  ]
+    imports: [
+        CommonModule,
+        ItinerariesRoutingModule,
+        SharedMaterialModule,
+        SharedModule,
+        MapModule,
+    ]
 })
 export class ItinerariesModule { }

@@ -7,7 +7,7 @@ import {AuthenticationService} from "./service/authentication.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'pf-frontend';
+  title = 'get-your-route';
 
   constructor(private authService: AuthenticationService) {
   }

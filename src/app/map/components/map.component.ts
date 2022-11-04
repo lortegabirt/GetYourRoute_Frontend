@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import * as L from 'leaflet';
 
 declare var HeatmapOverlay: any;
@@ -10,6 +10,18 @@ declare var HeatmapOverlay: any;
 })
 export class MapComponent implements OnInit {
 
+  @Input() set heatMapData(data: { data: { lat: number, lng: number, count: number }[] }) {
+    if (data) {
+      this.heatmapLayer.setData({min: 1, max: 100, ...data});
+    }
+  }
+
+  @Input() set fitBounds(locations: L.LatLng[]) {
+    if (locations) {
+      this.map.fitBounds(L.latLngBounds(locations));
+    }
+  }
+
   heatmapLayer = new HeatmapOverlay({
     radius: .0003,
     maxOpacity: 0.5,
@@ -19,9 +31,6 @@ export class MapComponent implements OnInit {
     lngField: 'lng',
     valueField: 'count'
   });
-  data = {
-    data: []
-  } as any
 
   mapOptions = {
     layers: [
@@ -29,10 +38,12 @@ export class MapComponent implements OnInit {
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18, attribution: '...'})
     ],
     zoom: 15,
-    center: L.latLng([ 43.263679, -2.923050 ]),
+    center: L.latLng([43.263679, -2.923050]),
     maxZoom: 18,
     minZoom: 4
   };
+
+  private map: L.Map;
 
   constructor() {
   }
@@ -41,14 +52,6 @@ export class MapComponent implements OnInit {
   }
 
   onMapReady(map: L.Map) {
-    map.on('mousemove', (event: L.LeafletMouseEvent) => {
-      this.data.data.push({
-        lat: event.latlng.lat,
-        lng: event.latlng.lng,
-        count: 1
-      });
-
-      this.heatmapLayer.setData(this.data);
-    });
+    this.map = map;
   }
 }

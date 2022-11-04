@@ -1,5 +1,8 @@
 <app-view-wrapper [title]="(itinerary$ | async)?.name">
   <main class="prose prose-slate prose-headings:text-slate-600">
-    <p>{{(itinerary$ | async).description}}</p>
+    <p>{{(itinerary$ | async)?.description}}</p>
   </main>
+  <div class="border border-slate-500 shadow-xl">
+    <app-itinerary-map [geolocations]="geolocations$ | async"></app-itinerary-map>
+  </div>
 </app-view-wrapper>
