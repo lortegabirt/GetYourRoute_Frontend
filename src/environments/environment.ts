@@ -6,9 +6,12 @@ export const environment = {
   production: false,
   backend: {
     baseUrl: 'http://localhost:8080/',
+    mockUrl: 'http://localhost:3000/',
     endpoints: {
-      login: 'api/v0/authentication/login',
-      signup: 'api/v0/authentication/signup'
+      login: 'api/v0/authentication/login/',
+      signup: 'api/v0/authentication/signup/',
+      itineraries: 'api/v0/itinerarys/',
+      geolocations: 'geolocations'
     }
   }
 };

@@ -6,11 +6,24 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatTableModule} from "@angular/material/table";
+import {MatIconModule} from "@angular/material/icon";
+import {DeleteMiniFabComponent} from "./component/delete-mini-fab/delete-mini-fab.component";
+import {DetailMiniFabComponent} from "./component/detail-mini-fab/detail-mini-fab.component";
+import {EditMiniFabComponent} from "./component/edit-mini-fab/edit-mini-fab.component";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatDialogModule} from "@angular/material/dialog";
+import {AlertDialogComponent} from "./component/alert-dialog/alert-dialog.component";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DeleteMiniFabComponent,
+    DetailMiniFabComponent,
+    EditMiniFabComponent,
+    AlertDialogComponent,
+  ],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -19,6 +32,10 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatButtonModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatDialogModule,
   ],
   exports: [
     MatToolbarModule,
@@ -27,6 +44,14 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatButtonModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatTableModule,
+    MatIconModule,
+    DeleteMiniFabComponent,
+    DetailMiniFabComponent,
+    EditMiniFabComponent,
+    MatPaginatorModule,
+    MatDialogModule,
+    AlertDialogComponent,
   ]
 })
 export class SharedMaterialModule { }

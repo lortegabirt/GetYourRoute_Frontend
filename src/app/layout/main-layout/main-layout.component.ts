@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../service/authentication.service";
 import {BehaviorSubject, Observable, of} from "rxjs";
-import {Session} from "../../shared/model/Session.model";
+import {Session} from "../../authentication/model/Session.model";
 
 @Component({
   selector: 'app-main-layout',
@@ -21,7 +21,6 @@ export class MainLayoutComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
-    this.router.navigate(['auth', 'login']);
   }
 
   onLogin() {

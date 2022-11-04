@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {MainLayoutComponent} from "./layout/main-layout/main-layout.component";
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {
@@ -9,13 +10,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'auth',
-        pathMatch: 'full',
+        component: HomeComponent
       },
       {
         path: 'auth',
-        loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-      }
+        loadChildren: () => import('./authentication/login.module').then(m => m.LoginModule)
+      },
+      {
+        path: 'itineraries',
+        loadChildren: () => import('./itineraries/itineraries.module').then(m => m.ItinerariesModule)
+      },
     ]
   }
 ];

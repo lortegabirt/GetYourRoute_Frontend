@@ -1,0 +1,6 @@
+services:
+  get-your-route:
+    build: .
+    image: get-your-route-backend
+    ports:
+      - 8000:80

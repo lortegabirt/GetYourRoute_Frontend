@@ -12,7 +12,7 @@ export class NotificationService {
 
   showSuccess(message: string): void {
     this.zone.run(() => {
-      this.snackBar.open(message, 'Accept', {duration: 5000});
+      this.snackBar.open(message, 'Accept', {duration: 5000, verticalPosition: 'top'});
     });
   }
 
