@@ -10,9 +10,9 @@ import {NotificationService} from "../../../service/notification.service";
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent {
 
-  signup = this.formBuilder.group({
+  signupFormGroup = this.formBuilder.group({
     name: ['', Validators.required],
     lastName: [''],
     email: ['', [Validators.email, Validators.required]],
@@ -27,12 +27,9 @@ export class SignupComponent implements OnInit {
               private authenticationService: AuthenticationService) {
   }
 
-  ngOnInit(): void {
-  }
-
   onSignup() {
     this.loading = true;
-    this.authenticationService.signup(this.signup.value as User)
+    this.authenticationService.signup(this.signupFormGroup.value as User)
       .subscribe({
         next: _ => {
           this.loading = false;

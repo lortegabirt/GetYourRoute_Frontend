@@ -20,6 +20,10 @@ const routes: Routes = [
         path: 'itineraries',
         loadChildren: () => import('./itineraries/itineraries.module').then(m => m.ItinerariesModule)
       },
+      {
+        path: 'profile',
+        loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+      },
     ]
   }
 ];

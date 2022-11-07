@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
@@ -14,7 +14,7 @@ import {EditMiniFabComponent} from "./component/edit-mini-fab/edit-mini-fab.comp
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatDialogModule} from "@angular/material/dialog";
 import {AlertDialogComponent} from "./component/alert-dialog/alert-dialog.component";
-
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -36,6 +36,7 @@ import {AlertDialogComponent} from "./component/alert-dialog/alert-dialog.compon
     MatIconModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatMenuModule,
   ],
   exports: [
     MatToolbarModule,
@@ -52,6 +53,7 @@ import {AlertDialogComponent} from "./component/alert-dialog/alert-dialog.compon
     MatPaginatorModule,
     MatDialogModule,
     AlertDialogComponent,
+    MatMenuModule,
   ]
 })
 export class SharedMaterialModule { }
