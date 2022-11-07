@@ -26,4 +26,8 @@ export class ItinerariesHttpService {
     return this.http.delete<void>(`${this.baseUrl}${this.path}${itineraryId}`)
   }
 
+  public updateItinerary(itineraryId: string, itinerary: Itinerary): Observable<Itinerary> {
+    return this.http.put<Itinerary>(`${this.baseUrl}${this.path}${itineraryId}`, itinerary);
+  }
+
 }

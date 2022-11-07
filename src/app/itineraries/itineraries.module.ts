@@ -11,6 +11,7 @@ import {SharedModule} from "../shared/shared.module";
 import { ItineraryDetailComponent } from './views/itinerary-detail/itinerary-detail.component';
 import {MapModule} from "../map/map.module";
 import { ItineraryMapComponent } from './components/itinerary-map/itinerary-map.component';
+import { ItineraryEditComponent } from './components/itinerary-edit/itinerary-edit.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ItineraryMapComponent } from './components/itinerary-map/itinerary-map.
     ItineraryTableComponent,
     ItinerariesComponent,
     ItineraryDetailComponent,
-    ItineraryMapComponent
+    ItineraryMapComponent,
+    ItineraryEditComponent
   ],
     imports: [
         CommonModule,

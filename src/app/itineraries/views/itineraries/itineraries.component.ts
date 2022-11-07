@@ -5,6 +5,7 @@ import {ItinerariesHttpService} from "../../service/itineraries.http.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AlertDialogComponent, AlertDialogData} from "../../../shared/component/alert-dialog/alert-dialog.component";
 import {Router} from "@angular/router";
+import {ItineraryEditComponent} from "../../components/itinerary-edit/itinerary-edit.component";
 
 @Component({
   selector: 'app-itineraries',
@@ -40,7 +41,21 @@ export class ItinerariesComponent implements OnInit {
     this.router.navigate(['itineraries', itinerary.id])
   }
 
+  onEdit(itinerary: Itinerary) {
+    const matDialogRef = this.dialog.open(
+      ItineraryEditComponent,
+      {data: itinerary}
+    )
+    matDialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.itinerariesHttpService.updateItinerary(result.id, result)
+          .subscribe(_ => this.loadData());
+      }
+    })
+  }
+
   private loadData() {
     this.itineraries$ = this.itinerariesHttpService.getItineraries();
   }
+
 }
