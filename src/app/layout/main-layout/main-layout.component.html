@@ -7,12 +7,22 @@
       <nav class="inline-block ml-5 space-x-4" *appAuthenticated>
         <a class="hover:underline font-sans" [routerLink]="['', 'itineraries']">Itineraries</a>
       </nav>
-      <button mat-button class="float-right"
-              *ngIf="!!(session$ | async)"
-              (click)="onLogout()">logout</button>
+      <ng-container *ngIf="!!(session$ | async)">
+        <button mat-icon-button
+                [mat-menu-trigger-for]="profile"
+                class="float-right">
+          <mat-icon>person</mat-icon>
+        </button>
+        <mat-menu #profile>
+          <small mat-menu-item disabled><span class="menu-title">{{(session$ | async).subjectName}}</span></small>
+          <button mat-menu-item [routerLink]="['profile']">profile</button>
+          <button mat-menu-item (click)="onLogout()">logout</button>
+        </mat-menu>
+      </ng-container>
       <button mat-button class="float-right"
               *ngIf="!(session$ | async)"
-              (click)="onLogin()">login</button>
+              (click)="onLogin()">login
+      </button>
     </div>
   </mat-toolbar>
   <div class="min-h-screen relative">

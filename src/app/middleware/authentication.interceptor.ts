@@ -12,7 +12,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.authenticationService.session.pipe(
       take(1),
-      filter(session => session !== null),
+      filter(session => !!session),
       map(session => this.attachToken(session, req)),
       defaultIfEmpty(req),
       concatMap(req => next.handle(req))

@@ -7,6 +7,7 @@ export const environment = {
       login: 'api/v0/authentication/login/',
       signup: 'api/v0/authentication/signup/',
       itineraries: 'api/v0/itinerarys/',
+      users: 'api/v0/users/',
       geolocations: 'geolocations'
     }
   }
