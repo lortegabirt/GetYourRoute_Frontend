@@ -12,8 +12,8 @@ export class HeatmapDataPipe implements PipeTransform {
 
   private getReduce(geolocations: Geolocation[]): { lat: number, lng: number, count: number }[] {
     return geolocations?.reduce((acc, val) => [...acc, {
-      lat: val.location.coordinates.values[0],
-      lng: val.location.coordinates.values[1],
+      lat: val.location.coordinates[0],
+      lng: val.location.coordinates[1],
       count: 1
     }], []);
   }

@@ -3,8 +3,6 @@ export interface Geolocation {
   itineraryId: string;
   userId: string;
   location: {
-    coordinates: {
-      values: [number, number];
-    };
+    coordinates: [number, number];
   };
 }

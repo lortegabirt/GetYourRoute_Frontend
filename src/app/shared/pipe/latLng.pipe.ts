@@ -7,8 +7,10 @@ import * as L from 'leaflet';
 })
 export class LatLngPipe implements PipeTransform {
 
-  transform(geolocation: Geolocation[]): L.LatLng[]{
-    return geolocation.map(location =>
+  transform(geolocations: Geolocation[]): L.LatLng[]{
+    return geolocations
+      ?.filter(location => location.location.coordinates.values)
+      .map(location =>
       new L.LatLng(location.location.coordinates[0], location.location.coordinates[1]));
   }
 

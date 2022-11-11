@@ -2,6 +2,7 @@ import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild
 import {Itinerary} from "../../model/Itinerary.model";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {Page} from "../../../shared/model/Page.model";
 
 @Component({
   selector: 'app-itinerary-table',
@@ -10,8 +11,8 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 export class ItineraryTableComponent implements AfterViewInit {
 
-  @Input() set dataSource(itineraries: Itinerary[]) {
-    this.tableDataSource.data = itineraries;
+  @Input() set dataSource(itineraries: Page<Itinerary>) {
+    this.tableDataSource.data = itineraries.content;
   }
   @Output() delete = new EventEmitter<Itinerary>();
   @Output() detail = new EventEmitter<Itinerary>();

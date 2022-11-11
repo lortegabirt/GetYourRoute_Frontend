@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {AlertDialogComponent, AlertDialogData} from "../../../shared/component/alert-dialog/alert-dialog.component";
 import {Router} from "@angular/router";
 import {ItineraryEditComponent} from "../../components/itinerary-edit/itinerary-edit.component";
+import {Page} from "../../../shared/model/Page.model";
 
 @Component({
   selector: 'app-itineraries',
@@ -14,7 +15,7 @@ import {ItineraryEditComponent} from "../../components/itinerary-edit/itinerary-
 })
 export class ItinerariesComponent implements OnInit {
 
-  itineraries$: Observable<Itinerary[]>;
+  itineraries$: Observable<Page<Itinerary>>;
 
   constructor(private itinerariesHttpService: ItinerariesHttpService,
               private router: Router,

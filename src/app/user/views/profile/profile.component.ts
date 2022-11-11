@@ -29,17 +29,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authenticationService.session.pipe(
-      take(1),
-      concatMap(session => this.userHttpService.getByEmail(session.subjectEmail))
-    ).subscribe(user => {
-      this.profileFormGroup.setValue({
-        name: user.name,
-        lastName: user.lastName || '',
-        email: user.email,
-      });
-      this.id = user.id;
-    })
+    this.loadFormData();
   }
 
   onEdit() {
@@ -58,5 +48,25 @@ export class ProfileComponent implements OnInit {
           // TODO refresh token
         }
       })
+  }
+
+  onCancel() {
+    this.editing = false;
+    this.profileFormGroup.disable();
+    this.loadFormData();
+  }
+
+  private loadFormData() {
+    this.authenticationService.session.pipe(
+      take(1),
+      concatMap(session => this.userHttpService.getByEmail(session.subjectEmail))
+    ).subscribe(user => {
+      this.profileFormGroup.setValue({
+        name: user.name,
+        lastName: user.lastName || '',
+        email: user.email,
+      });
+      this.id = user.id;
+    })
   }
 }

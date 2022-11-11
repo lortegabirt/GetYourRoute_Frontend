@@ -11,11 +11,16 @@
     </mat-form-field>
   </form>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="flex">
   <button mat-raised-button
+          class="flex-1 w-1/2"
           color="warn"
-          [mat-dialog-close]="false">Cancel</button>
-  <button mat-raised-button color="primary"
+          [mat-dialog-close]="false">
+    Cancel
+  </button>
+  <button mat-raised-button
+          class="flex-1 w-1/2"
+          color="primary"
           (click)="onSave()">
     Save
   </button>

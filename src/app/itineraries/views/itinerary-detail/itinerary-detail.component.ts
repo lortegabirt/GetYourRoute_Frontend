@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {map, Observable, shareReplay, switchMap} from "rxjs";
+import {Observable, of, shareReplay, switchMap} from "rxjs";
 import {ItinerariesHttpService} from "../../service/itineraries.http.service";
 import {Itinerary} from "../../model/Itinerary.model";
 import {Geolocation} from "../../../geolocation/model/geolocation.model";
@@ -14,7 +14,7 @@ import {GeolocationHttpService} from "../../../geolocation/service/geolocation.h
 export class ItineraryDetailComponent implements OnInit {
 
   itinerary$: Observable<Itinerary>;
-  geolocations$: Observable<Geolocation[]>;
+  geolocations$: Observable<Geolocation[]> = of([]);
 
   constructor(private route: ActivatedRoute,
               private geolocationHttpService: GeolocationHttpService,

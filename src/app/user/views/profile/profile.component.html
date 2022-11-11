@@ -23,15 +23,25 @@
                   (click)="onEdit()">
             Edit
           </button>
-          <button mat-flat-button
-                  *ngIf="editing"
-                  color="accent"
-                  class="w-full"
-                  [disabled]="!profileFormGroup.valid"
-                  (click)="onSave()">
-            Save
-          </button>
-<!--          <mat-progress-bar class="mt-1" mode="indeterminate" color="accent" *ngIf="loading"></mat-progress-bar>-->
+          <div class="flex space-x-4">
+            <button mat-flat-button
+                    *ngIf="editing"
+                    color="warn"
+                    class="w-1/2"
+                    [disabled]="!profileFormGroup.valid"
+                    (click)="onCancel()">
+              Cancel
+            </button>
+            <button mat-flat-button
+                    *ngIf="editing"
+                    color="primary"
+                    class="w-1/2"
+                    [disabled]="!profileFormGroup.valid"
+                    (click)="onSave()">
+              Save
+            </button>
+          </div>
+          <!--          <mat-progress-bar class="mt-1" mode="indeterminate" color="accent" *ngIf="loading"></mat-progress-bar>-->
         </div>
       </form>
     </mat-card-content>

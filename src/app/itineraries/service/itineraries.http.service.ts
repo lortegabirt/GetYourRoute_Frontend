@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Itinerary} from "../model/Itinerary.model";
 import {environment} from "../../../environments/environment";
+import {Page} from "../../shared/model/Page.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class ItinerariesHttpService {
 
   constructor(private http: HttpClient) { }
 
-  public getItineraries(): Observable<Itinerary[]> {
-    return this.http.get<Itinerary[]>(`${this.baseUrl}${this.path}`);
+  public getItineraries(): Observable<Page<Itinerary>> {
+    return this.http.get<Page<Itinerary>>(`${this.baseUrl}${this.path}`);
   }
 
   public getItinerary(id: string): Observable<Itinerary> {
