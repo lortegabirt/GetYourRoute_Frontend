@@ -12,6 +12,7 @@ import { ItineraryDetailComponent } from './views/itinerary-detail/itinerary-det
 import {MapModule} from "../map/map.module";
 import { ItineraryMapComponent } from './components/itinerary-map/itinerary-map.component';
 import { ItineraryEditComponent } from './components/itinerary-edit/itinerary-edit.component';
+import { ItineraryLocationSliderComponent } from './components/itinerary-location-slider/itinerary-location-slider.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ItineraryEditComponent } from './components/itinerary-edit/itinerary-ed
     ItinerariesComponent,
     ItineraryDetailComponent,
     ItineraryMapComponent,
-    ItineraryEditComponent
+    ItineraryEditComponent,
+    ItineraryLocationSliderComponent
   ],
     imports: [
         CommonModule,

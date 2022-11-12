@@ -12,7 +12,7 @@ import {Page} from "../../../shared/model/Page.model";
 export class ItineraryTableComponent implements AfterViewInit {
 
   @Input() set dataSource(itineraries: Page<Itinerary>) {
-    this.tableDataSource.data = itineraries.content;
+    this.tableDataSource.data = itineraries?.content;
   }
   @Output() delete = new EventEmitter<Itinerary>();
   @Output() detail = new EventEmitter<Itinerary>();

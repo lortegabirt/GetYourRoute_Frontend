@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Geolocation} from "../../../geolocation/model/geolocation.model";
 import {Markers} from "../../../map/models/marker.model";
 import {CustomMarker} from "../../../map/components/map.component";
+import {CurrentLocationLayerService} from "../../../geolocation/service/current-location-layer.service";
+import {map, Observable, of, tap} from "rxjs";
+import {Layer} from "leaflet";
 
 @Component({
   selector: 'app-itinerary-map',
@@ -16,6 +19,8 @@ export class ItineraryMapComponent implements OnInit {
     this.currentLocation = location;
   }
 
+  extraLayers$: Observable<Layer[]> = of([]);
+
   currentLocation: Geolocation;
   currentLocationMarker: CustomMarker = {
     id: 'currentLocation',
@@ -23,9 +28,11 @@ export class ItineraryMapComponent implements OnInit {
     location: [1, 1]
   }
 
-  constructor() { }
+  constructor(private currentLocationLayerService: CurrentLocationLayerService) { }
 
   ngOnInit(): void {
+    this.extraLayers$ = this.currentLocationLayerService.getCurrentLocation().pipe(
+      map(location => [location]),
+    );
   }
-
 }

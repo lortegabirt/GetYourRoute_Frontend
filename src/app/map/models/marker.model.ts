@@ -1,6 +1,6 @@
 import * as L from 'leaflet';
 
-const redMarker: (title: string) => L.MarkerOptions = (title) =>  ({
+const redMarker: (title: string) => L.MarkerOptions = (title= '') =>  ({
   icon: L.icon({
     iconSize: [25, 41],
     iconAnchor: [13, 41],

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as L from 'leaflet';
 
 declare var HeatmapOverlay: any;
@@ -38,6 +38,8 @@ export class MapComponent implements OnInit {
     }
     this.drawMarkers();
   }
+
+  @Input() extraLayers: L.Layer[] = [];
 
   heatmapLayer = new HeatmapOverlay({
     radius: .0003,

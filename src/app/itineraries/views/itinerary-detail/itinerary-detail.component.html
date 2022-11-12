@@ -2,6 +2,11 @@
   <main class="prose prose-slate prose-headings:text-slate-600">
     <p>{{(itinerary$ | async)?.description}}</p>
   </main>
+  <h2 class="text-slate-600 text-xl mb-2 mt-5">Location Historic</h2>
+  <h2 class="text-slate-600 text-sm mt-2">{{currentLocation?.timestamp | date: 'MMMM dd/yyyy - hh:mm:ss'}}</h2>
+  <app-itinerary-location-slider
+    [geolocations]="geolocations$ | async"
+    (locationChange)="onLocationChange($event)"></app-itinerary-location-slider>
   <div class="border border-slate-500 shadow-xl">
     <app-itinerary-map [geolocations]="geolocations$ | async"></app-itinerary-map>
   </div>

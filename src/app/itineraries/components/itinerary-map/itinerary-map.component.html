@@ -1,4 +1,5 @@
 <app-map [heatMapData]="geolocations | heatmapData"
          [fitBounds]="geolocations | latLng"
+         [extraLayers]="extraLayers$ | async"
          [marker]="currentLocationMarker">
 </app-map>
