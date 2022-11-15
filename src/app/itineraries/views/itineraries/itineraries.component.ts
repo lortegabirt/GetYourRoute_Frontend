@@ -7,6 +7,7 @@ import {AlertDialogComponent, AlertDialogData} from "../../../shared/component/a
 import {Router} from "@angular/router";
 import {ItineraryEditComponent} from "../../components/itinerary-edit/itinerary-edit.component";
 import {Page} from "../../../shared/model/Page.model";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-itineraries',
@@ -55,8 +56,11 @@ export class ItinerariesComponent implements OnInit {
     })
   }
 
-  private loadData() {
-    this.itineraries$ = this.itinerariesHttpService.getItineraries();
+  private loadData(size = 10, page = 0) {
+    this.itineraries$ = this.itinerariesHttpService.getItineraries(size, page);
   }
 
+  onPage($event: PageEvent) {
+    this.loadData($event.pageSize, $event.pageIndex)
+  }
 }

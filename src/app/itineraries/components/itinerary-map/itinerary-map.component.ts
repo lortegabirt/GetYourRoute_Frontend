@@ -4,7 +4,7 @@ import {Markers} from "../../../map/models/marker.model";
 import {CustomMarker} from "../../../map/components/map.component";
 import {CurrentLocationLayerService} from "../../../geolocation/service/current-location-layer.service";
 import {map, Observable, of, tap} from "rxjs";
-import {Layer} from "leaflet";
+import {latLngBounds, Layer} from "leaflet";
 
 @Component({
   selector: 'app-itinerary-map',

@@ -15,12 +15,12 @@ export class ItinerariesHttpService {
 
   constructor(private http: HttpClient) { }
 
-  public getItineraries(): Observable<Page<Itinerary>> {
-    return this.http.get<Page<Itinerary>>(`${this.baseUrl}${this.path}`);
+  public getItineraries(size = 10, page = 0): Observable<Page<Itinerary>> {
+    return this.http.get<Page<Itinerary>>(`${this.baseUrl}${this.path}`, {params: {size, page}});
   }
 
   public getItinerary(id: string): Observable<Itinerary> {
-    return this.http.get<Itinerary>(`${this.baseUrl}${this.path}${id}`);
+    return this.http.get<Itinerary>(`${this.baseUrl}${this.path}id/${id}`);
   }
 
   public deleteItinerary(itineraryId: string): Observable<void> {

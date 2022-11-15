@@ -1,5 +1,5 @@
 <app-view-wrapper [title]="(itinerary$ | async)?.name">
-  <main class="prose prose-slate prose-headings:text-slate-600">
+  <main class="prose prose-slate prose-headings:text-slate-600 max-w-none">
     <p>{{(itinerary$ | async)?.description}}</p>
   </main>
   <h2 class="text-slate-600 text-xl mb-2 mt-5">Location Historic</h2>
