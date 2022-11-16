@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Observable, of, shareReplay, switchMap, tap} from "rxjs";
+import {map, Observable, of, shareReplay, switchMap, tap} from "rxjs";
 import {ItinerariesHttpService} from "../../service/itineraries.http.service";
 import {Itinerary} from "../../model/Itinerary.model";
 import {Geolocation} from "../../../geolocation/model/geolocation.model";
@@ -31,6 +31,7 @@ export class ItineraryDetailComponent implements OnInit {
     );
     this.geolocations$ = this.route.params.pipe(
       switchMap(({id}) => this.geolocationHttpService.getGeolocations({itineraryId: id})),
+      map(page => page.content),
       tap(list => list.length && (this.currentLocation = list[0]))
     );
   }

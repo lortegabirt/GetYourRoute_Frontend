@@ -42,7 +42,7 @@ export class MapComponent implements OnInit {
   @Input() extraLayers: L.Layer[] = [];
 
   heatmapLayer = new HeatmapOverlay({
-    radius: .0003,
+    radius: .0002,
     maxOpacity: 0.5,
     scaleRadius: true,
     useLocalExtrema: true,
