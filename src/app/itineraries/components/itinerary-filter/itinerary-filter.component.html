@@ -1,0 +1,19 @@
+<div class="grid grid-cols-6">
+  <mat-form-field appearance="standard" class="col-span-2">
+    <mat-label>Choose a range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input [(ngModel)]="beginDate" matStartDate placeholder="start">
+      <input [(ngModel)]="endDate" matEndDate placeholder="end">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <div>
+    <button mat-icon-button class="icon-button left" (click)="onFilter()" color="primary">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button mat-icon-button class="icon-button" (click)="onClear()" color="warn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

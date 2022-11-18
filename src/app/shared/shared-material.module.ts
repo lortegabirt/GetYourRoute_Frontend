@@ -16,6 +16,9 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {AlertDialogComponent} from "./component/alert-dialog/alert-dialog.component";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSliderModule} from "@angular/material/slider";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -39,6 +42,9 @@ import {MatSliderModule} from "@angular/material/slider";
     MatDialogModule,
     MatMenuModule,
     MatSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDividerModule,
   ],
   exports: [
     MatToolbarModule,
@@ -57,6 +63,8 @@ import {MatSliderModule} from "@angular/material/slider";
     AlertDialogComponent,
     MatMenuModule,
     MatSliderModule,
+    MatDatepickerModule,
+    MatDividerModule,
   ]
 })
 export class SharedMaterialModule { }

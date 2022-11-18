@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {BehaviorSubject, Observable, scan, Subject, takeUntil} from "rxjs";
 import {Itinerary} from "../../model/Itinerary.model";
-import {ItinerariesHttpService} from "../../service/itineraries.http.service";
+import {ItinerariesHttpService, PageRequest} from "../../service/itineraries.http.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AlertDialogComponent, AlertDialogData} from "../../../shared/component/alert-dialog/alert-dialog.component";
 import {Router} from "@angular/router";
@@ -9,14 +9,21 @@ import {ItineraryEditComponent} from "../../components/itinerary-edit/itinerary-
 import {Page} from "../../../shared/model/Page.model";
 import {PageEvent} from "@angular/material/paginator";
 
+
 @Component({
   selector: 'app-itineraries',
   templateUrl: './itineraries.component.html',
   styleUrls: ['./itineraries.component.scss']
 })
-export class ItinerariesComponent implements OnInit {
+export class ItinerariesComponent implements OnInit, OnDestroy {
 
   itineraries$: Observable<Page<Itinerary>>;
+  filter: {[key: string]: string | number} = {};
+
+  pageRequest$ = new Subject<PageRequest>();
+  destroyed$ = new Subject();
+
+  initialPage = {page: 0, size: 10};
 
   constructor(private itinerariesHttpService: ItinerariesHttpService,
               private router: Router,
@@ -24,7 +31,11 @@ export class ItinerariesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData();
+    this.pageRequest$.pipe(
+      takeUntil(this.destroyed$),
+      scan((acc, value) => ({...acc, ...value}))
+    ).subscribe(params => this.loadData(params));
+    this.pageRequest$.next(this.initialPage);
   }
 
   onDelete(itinerary: Itinerary) {
@@ -34,7 +45,7 @@ export class ItinerariesComponent implements OnInit {
     matDialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.itinerariesHttpService.deleteItinerary(itinerary.id)
-          .subscribe(_ => this.loadData());
+          .subscribe(_ => this.pageRequest$.next(this.initialPage));
       }
     })
   }
@@ -51,16 +62,25 @@ export class ItinerariesComponent implements OnInit {
     matDialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.itinerariesHttpService.updateItinerary(result.id, result)
-          .subscribe(_ => this.loadData());
+          .subscribe(_ => this.pageRequest$.next({}));
       }
     })
   }
 
-  private loadData(size = 10, page = 0) {
-    this.itineraries$ = this.itinerariesHttpService.getItineraries(size, page);
+  private loadData(params: PageRequest) {
+    this.itineraries$ = this.itinerariesHttpService.getItineraries(params);
   }
 
   onPage($event: PageEvent) {
-    this.loadData($event.pageSize, $event.pageIndex)
+    this.pageRequest$.next({size: $event.pageSize, page: $event.pageIndex})
+  }
+
+  onFilter(filter: { beginDate: string; endDate: string }) {
+    console.log(filter);
+    this.pageRequest$.next(filter);
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next('');
   }
 }

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {TrimPipe} from './pipe/trim.pipe';
 import {AuthenticatedDirective} from './directives/authenticated.directive';
@@ -22,6 +22,7 @@ import { LatLngPipe } from './pipe/latLng.pipe';
     CommonModule,
     RouterOutlet,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     RouterLinkWithHref,
   ],
@@ -29,6 +30,7 @@ import { LatLngPipe } from './pipe/latLng.pipe';
     CommonModule,
     RouterOutlet,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     RouterLinkWithHref,
     TrimPipe,

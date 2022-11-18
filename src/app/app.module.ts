@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutModule} from "./layout/layout.module";
 import {globalErrorHandlerProvider, httpInterceptorProviders} from "./middleware";
 import { HomeComponent } from './home/home.component';
+import {MAT_DATE_LOCALE} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -19,8 +20,11 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     LayoutModule,
   ],
-  providers: [globalErrorHandlerProvider, httpInterceptorProviders],
-  exports: [],
+  providers: [
+    globalErrorHandlerProvider,
+    httpInterceptorProviders,
+    {provide: MAT_DATE_LOCALE, useValue: 'es'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

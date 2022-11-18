@@ -5,6 +5,8 @@ import {Itinerary} from "../model/Itinerary.model";
 import {environment} from "../../../environments/environment";
 import {Page} from "../../shared/model/Page.model";
 
+export type PageRequest = {[key: string]: string | number};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,8 +17,8 @@ export class ItinerariesHttpService {
 
   constructor(private http: HttpClient) { }
 
-  public getItineraries(size = 10, page = 0): Observable<Page<Itinerary>> {
-    return this.http.get<Page<Itinerary>>(`${this.baseUrl}${this.path}`, {params: {size, page}});
+  public getItineraries(params: PageRequest = {}): Observable<Page<Itinerary>> {
+    return this.http.get<Page<Itinerary>>(`${this.baseUrl}${this.path}`, {params});
   }
 
   public getItinerary(id: string): Observable<Itinerary> {

@@ -12,7 +12,7 @@ export class CurrentLocationLayerService implements OnDestroy{
   private currentLocationLayer$: BehaviorSubject<L.Layer> = new BehaviorSubject(L.marker([1, 1]));
 
   public setCurrentLocation(location: Geolocation) {
-    const marker = L.marker(location.location.coordinates, Markers.redMarker('Current location'));
+    const marker = L.marker(location?.location.coordinates, Markers.redMarker('Current location'));
     this.currentLocationLayer$.next(marker);
   }
 
