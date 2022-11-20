@@ -4,11 +4,16 @@ export interface Jwt {
   iat: number;
   exp: number;
   name?: string;
+  id?: string;
 }
 
 export class Session {
 
   constructor(private jwt?: Jwt) {
+  }
+
+  get subjectId(): string {
+    return this.jwt?.id;
   }
 
   get subjectEmail(): string {

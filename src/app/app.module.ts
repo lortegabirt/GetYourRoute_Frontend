@@ -8,18 +8,20 @@ import {LayoutModule} from "./layout/layout.module";
 import {globalErrorHandlerProvider, httpInterceptorProviders} from "./middleware";
 import { HomeComponent } from './home/home.component';
 import {MAT_DATE_LOCALE} from "@angular/material/core";
+import {MarkdownModule} from "ngx-markdown";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        MarkdownModule.forRoot(),
+    ],
   providers: [
     globalErrorHandlerProvider,
     httpInterceptorProviders,

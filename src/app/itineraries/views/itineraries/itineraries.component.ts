@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BehaviorSubject, Observable, scan, Subject, takeUntil} from "rxjs";
+import {combineLatestWith, map, Observable, scan, Subject, takeUntil} from "rxjs";
 import {Itinerary} from "../../model/Itinerary.model";
 import {ItinerariesHttpService, PageRequest} from "../../service/itineraries.http.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {ItineraryEditComponent} from "../../components/itinerary-edit/itinerary-edit.component";
 import {Page} from "../../../shared/model/Page.model";
 import {PageEvent} from "@angular/material/paginator";
+import {AuthenticationService} from "../../../service/authentication.service";
 
 
 @Component({
@@ -18,23 +19,29 @@ import {PageEvent} from "@angular/material/paginator";
 export class ItinerariesComponent implements OnInit, OnDestroy {
 
   itineraries$: Observable<Page<Itinerary>>;
-  filter: {[key: string]: string | number} = {};
-
   pageRequest$ = new Subject<PageRequest>();
   destroyed$ = new Subject();
 
   initialPage = {page: 0, size: 10};
 
   constructor(private itinerariesHttpService: ItinerariesHttpService,
+              private authenticationService: AuthenticationService,
               private router: Router,
               private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+    const emailParam$ = this.authenticationService.session.pipe(
+      map(session => ({userId: session?.subjectId}))
+    )
+
     this.pageRequest$.pipe(
+      combineLatestWith(emailParam$),
       takeUntil(this.destroyed$),
+      map(([request, email]) => ({...request, ...email})),
       scan((acc, value) => ({...acc, ...value}))
     ).subscribe(params => this.loadData(params));
+
     this.pageRequest$.next(this.initialPage);
   }
 
@@ -67,17 +74,16 @@ export class ItinerariesComponent implements OnInit, OnDestroy {
     })
   }
 
-  private loadData(params: PageRequest) {
-    this.itineraries$ = this.itinerariesHttpService.getItineraries(params);
-  }
-
   onPage($event: PageEvent) {
     this.pageRequest$.next({size: $event.pageSize, page: $event.pageIndex})
   }
 
   onFilter(filter: { beginDate: string; endDate: string }) {
-    console.log(filter);
     this.pageRequest$.next(filter);
+  }
+
+  private loadData(params: PageRequest) {
+    this.itineraries$ = this.itinerariesHttpService.getItineraries(params);
   }
 
   ngOnDestroy(): void {
