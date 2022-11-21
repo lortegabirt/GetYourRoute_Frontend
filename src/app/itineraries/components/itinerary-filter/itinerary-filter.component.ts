@@ -13,8 +13,8 @@ export class ItineraryFilterComponent {
 
   onFilter() {
     this.filter.emit({
-      beginDate: this.beginDate.toISOString(),
-      endDate: this.endDate.toISOString(),
+      beginDate: this.beginDate?.toISOString(),
+      endDate: this.endDate?.toISOString(),
     })
   }
 

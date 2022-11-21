@@ -50,11 +50,12 @@ export class AuthenticationService {
   public restoreSession() {
     const token = localStorage.getItem('token');
     const restoredSession = token && new Session({token, ...jwtDecode(token)});
-    if (!restoredSession?.isExpired) {
+    if (!!token && !restoredSession?.isExpired) {
       console.log('session restored');
       this._session.next(restoredSession);
     } else {
       console.log('token expired');
+      this.router.navigate(['']);
     }
   }
 
