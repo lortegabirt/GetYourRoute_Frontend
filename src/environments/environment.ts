@@ -11,7 +11,8 @@ export const environment = {
       signup: 'api/v0/authentication/signup/',
       itineraries: 'api/v0/itinerarys/',
       users: 'api/v0/users/',
-      geolocations: 'api/v0/geolocations/'
+      geolocations: 'api/v0/geolocations/',
+      pointsOfInterest: 'api/v0/points-of-interest/'
     }
   }
 };
