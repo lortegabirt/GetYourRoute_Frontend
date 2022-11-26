@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {combineLatestWith, map, Observable, scan, Subject, takeUntil} from "rxjs";
 import {Itinerary} from "../../model/Itinerary.model";
-import {ItinerariesHttpService, PageRequest} from "../../service/itineraries.http.service";
+import {ItinerariesHttpService} from "../../service/itineraries.http.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AlertDialogComponent, AlertDialogData} from "../../../shared/component/alert-dialog/alert-dialog.component";
 import {Router} from "@angular/router";
 import {ItineraryEditComponent} from "../../components/itinerary-edit/itinerary-edit.component";
-import {Page} from "../../../shared/model/Page.model";
+import {Page, PageRequest} from "../../../shared/model/Page.model";
 import {PageEvent} from "@angular/material/paginator";
 import {AuthenticationService} from "../../../service/authentication.service";
 

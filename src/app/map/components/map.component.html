@@ -1,7 +1,7 @@
 <div class="map"
      leaflet
+     [leafletLayersControl]="{baseLayers: maps, overlays}"
      [leafletLayers]="extraLayers"
      [leafletOptions]="mapOptions"
      (leafletMapReady)="onMapReady($event)">
-  <div *ngFor="let marker of markers" [leafletLayer]="marker"></div>
 </div>

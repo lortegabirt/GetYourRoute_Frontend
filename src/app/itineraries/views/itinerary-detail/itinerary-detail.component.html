@@ -11,6 +11,9 @@
     [geolocations]="geolocations$ | async"
     (locationChange)="onLocationChange($event)"></app-itinerary-location-slider>
   <div class="border border-slate-500 shadow-xl">
-    <app-itinerary-map [geolocations]="geolocations$ | async"></app-itinerary-map>
+    <app-itinerary-map [geolocations]="geolocations$ | async"
+                       [pointsOfInterest]="pointsOfInterest$ | async"
+                       [currentLocation]="currentLocation">
+    </app-itinerary-map>
   </div>
 </app-view-wrapper>

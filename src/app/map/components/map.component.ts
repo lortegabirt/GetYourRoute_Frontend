@@ -27,19 +27,8 @@ export class MapComponent implements OnInit {
     }
   }
 
-  @Input() set marker(marker: CustomMarker) {
-    this.addMarker(marker);
-    this.drawMarkers();
-  }
-
-  @Input() set markerCollection(markers: CustomMarker[]) {
-    if (markers?.length) {
-      markers.forEach(this.addMarker);
-    }
-    this.drawMarkers();
-  }
-
   @Input() extraLayers: L.Layer[] = [];
+  @Input() overlays = {};
 
   heatmapLayer = new HeatmapOverlay({
     radius: .0002,
@@ -50,9 +39,6 @@ export class MapComponent implements OnInit {
     lngField: 'lng',
     valueField: 'count'
   });
-
-  markerMap: Map<string, L.Marker> = new Map<string, L.Marker>()
-  markers: L.Marker[] = [];
 
   maps = {
     normal: L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18, attribution: '© OpenStreetMap'}),
@@ -80,22 +66,5 @@ export class MapComponent implements OnInit {
 
   onMapReady(map: L.Map) {
     this.map = map;
-    this.map.addControl(L.control.layers(this.maps));
-  }
-
-  private addMarker(marker: CustomMarker) {
-    if (this.markerMap.has(marker.id)) {
-      this.clearMarker(marker.id);
-    }
-    this.markerMap.set(marker.id, L.marker(marker.location, marker.options));
-  }
-
-  private drawMarkers() {
-    this.markers = Array.from(this.markerMap.values());
-  }
-
-  private clearMarker(id: string) {
-    this.markerMap.delete(id);
-    this.markers = Array.from(this.markerMap.values());
   }
 }

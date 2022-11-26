@@ -1,6 +1,6 @@
 import * as L from 'leaflet';
 
-const redMarker: (title: string) => L.MarkerOptions = (title= '') =>  ({
+const redMarker: (title?: string) => L.MarkerOptions = (title= '') =>  ({
   icon: L.icon({
     iconSize: [25, 41],
     iconAnchor: [13, 41],
@@ -11,14 +11,15 @@ const redMarker: (title: string) => L.MarkerOptions = (title= '') =>  ({
 });
 
 
-const yellowMarker = {
+const yellowMarker: (title?: string) => L.MarkerOptions = (title= '') =>  ({
   icon: L.icon({
     iconSize: [25, 41],
     iconAnchor: [13, 41],
-    iconUrl: 'assets/img/markers/marker-icon-yellow.png',
-    shadowUrl: 'assets/img/markers/marker-shadow.png'
-  })
-};
+    iconUrl: 'assets/markers/marker-icon-yellow.png',
+    shadowUrl: 'assets/markers/marker-shadow.png'
+  }),
+  title
+});
 
 const greenMarker = {
   icon: L.icon({
@@ -42,8 +43,8 @@ const pinkMarker = {
   icon: L.icon({
     iconSize: [25, 41],
     iconAnchor: [13, 41],
-    iconUrl: 'assets/img/markers/marker-icon-pink.png',
-    shadowUrl: 'assets/img/markers/marker-shadow.png'
+    iconUrl: 'assets/markers/marker-icon-pink.png',
+    shadowUrl: 'assets/markers/marker-shadow.png'
   })
 };
 
@@ -67,5 +68,5 @@ const violetMarker = {
 
 export const Markers = {
   redMarker,
-  pinkMarker,
+  yellowMarker,
 }
