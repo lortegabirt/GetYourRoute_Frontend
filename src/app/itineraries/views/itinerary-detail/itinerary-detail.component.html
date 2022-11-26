@@ -1,7 +1,8 @@
 <app-view-wrapper [title]="(itinerary$ | async)?.name">
   <main class="prose prose-slate prose-headings:text-slate-600 max-w-none">
     <p>
-      Distance: <strong>{{geolocations$ | async | distance | number:'1.2-2'}}m</strong>
+      Distance: <strong>{{geolocations$ | async | distance | number:'1.2-2'}}m</strong><br>
+      Duration: <strong>{{geolocations$ | async | duration}}</strong>
     </p>
     <p>{{(itinerary$ | async)?.description}}</p>
   </main>
@@ -16,4 +17,5 @@
                        [currentLocation]="currentLocation">
     </app-itinerary-map>
   </div>
+  <button mat-button color="primary" (click)="onCenter()">Center on itinerary</button>
 </app-view-wrapper>

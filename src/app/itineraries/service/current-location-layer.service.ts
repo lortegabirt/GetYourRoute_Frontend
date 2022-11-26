@@ -1,6 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {Geolocation} from "../model/geolocation.model";
+import {Geolocation} from "../../geolocation/model/geolocation.model";
 import * as L from "leaflet";
 import {Markers} from "../../map/models/marker.model";
 
@@ -21,7 +21,6 @@ export class CurrentLocationLayerService implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-    console.log('destroyed');
     this.currentLocationLayer$.complete();
   }
 }

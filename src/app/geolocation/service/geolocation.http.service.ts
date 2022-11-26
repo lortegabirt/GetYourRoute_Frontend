@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {Geolocation} from "../model/geolocation.model";
 import {Page} from "../../shared/model/Page.model";
 
@@ -15,6 +15,18 @@ export class GeolocationHttpService {
   constructor(private http: HttpClient) { }
 
   public getGeolocations(params: {itineraryId?: string} = {}): Observable<Page<Geolocation>> {
-    return this.http.get<Page<Geolocation>>(`${this.baseUrl}${this.path}`, {params});
+    return this.http.get<Page<Geolocation>>(`${this.baseUrl}${this.path}`, {params}).pipe(
+      map(this.convertDates())
+    );
+  }
+
+  private convertDates() {
+    return page => {
+      page.content = page.content.map(location => {
+        location.timestamp = new Date(location.timestamp);
+        return location;
+      })
+      return page;
+    };
   }
 }

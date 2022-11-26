@@ -53,7 +53,7 @@ export class MapComponent implements OnInit {
     zoom: 15,
     center: L.latLng([43.263679, -2.923050]),
     maxZoom: 18,
-    minZoom: 4,
+    minZoom: 12,
   };
 
   private map: L.Map;
@@ -66,5 +66,9 @@ export class MapComponent implements OnInit {
 
   onMapReady(map: L.Map) {
     this.map = map;
+  }
+
+  onClick() {
+    console.log('click')
   }
 }

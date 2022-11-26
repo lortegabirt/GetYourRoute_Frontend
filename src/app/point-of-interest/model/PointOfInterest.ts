@@ -1,11 +1,9 @@
 import {LocationPoint} from "../../geolocation/model/geolocation.model";
 
-export type PoiType = 'ACCOMMODATION' | 'RESTAURANT';
-
 export interface PointOfInterest {
   id: string;
   name: string;
-  type: PoiType;
+  type: PoiEnum;
   location: LocationPoint;
   properties: {[key: string]: string};
 }
