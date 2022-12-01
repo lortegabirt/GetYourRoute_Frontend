@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   backend: {
-    baseUrl: 'http://10.2.149.78:80/',
+    baseUrl: 'http://10.2.149.78.labs.birt.eus/',
     endpoints: {
       login: 'api/v0/authentication/login/',
       signup: 'api/v0/authentication/signup/',
