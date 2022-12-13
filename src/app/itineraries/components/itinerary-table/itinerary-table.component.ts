@@ -3,13 +3,14 @@ import {Itinerary} from "../../model/Itinerary.model";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {Page} from "../../../shared/model/Page.model";
+import intervalToDuration from "date-fns/intervalToDuration";
 
 @Component({
   selector: 'app-itinerary-table',
   templateUrl: './itinerary-table.component.html',
   styleUrls: ['./itinerary-table.component.scss']
 })
-export class ItineraryTableComponent implements AfterViewInit {
+export class ItineraryTableComponent {
 
   @Input() set dataSource(itineraries: Page<Itinerary>) {
     this.tableDataSource.data = itineraries?.content;
@@ -21,14 +22,10 @@ export class ItineraryTableComponent implements AfterViewInit {
   @Output() page = new EventEmitter<PageEvent>();
 
   tableDataSource = new MatTableDataSource<Itinerary>();
-  displayedColumns = ['name', 'description', 'beginDate', 'endDate', 'actions'];
+  displayedColumns = ['name', 'description', 'beginDate', 'endDate', 'duration', 'actions'];
   pageMetadata: Page<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit(): void {
-    // this.tableDataSource.paginator = this.paginator;
-  }
 
   onDetail(itinerary: Itinerary) {
     this.detail.emit(itinerary);
@@ -45,4 +42,5 @@ export class ItineraryTableComponent implements AfterViewInit {
   onPage($event: PageEvent) {
     this.page.emit($event);
   }
+
 }

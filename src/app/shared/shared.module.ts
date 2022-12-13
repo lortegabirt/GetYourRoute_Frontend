@@ -8,6 +8,7 @@ import {AuthenticatedDirective} from './directives/authenticated.directive';
 import {ViewWrapperComponent} from "./view-wrapper/view-wrapper.component";
 import {HeatmapDataPipe} from "./pipe/heatmapData.pipe";
 import { LatLngPipe } from './pipe/latLng.pipe';
+import { DurationPipe } from './pipe/duration.pipe';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { LatLngPipe } from './pipe/latLng.pipe';
     ViewWrapperComponent,
     HeatmapDataPipe,
     LatLngPipe,
+    DurationPipe,
   ],
   imports: [
     CommonModule,
@@ -26,18 +28,19 @@ import { LatLngPipe } from './pipe/latLng.pipe';
     HttpClientModule,
     RouterLinkWithHref,
   ],
-  exports: [
-    CommonModule,
-    RouterOutlet,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
-    RouterLinkWithHref,
-    TrimPipe,
-    AuthenticatedDirective,
-    ViewWrapperComponent,
-    HeatmapDataPipe,
-    LatLngPipe,
-  ]
+    exports: [
+        CommonModule,
+        RouterOutlet,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        RouterLinkWithHref,
+        TrimPipe,
+        AuthenticatedDirective,
+        ViewWrapperComponent,
+        HeatmapDataPipe,
+        LatLngPipe,
+        DurationPipe,
+    ]
 })
 export class SharedModule { }

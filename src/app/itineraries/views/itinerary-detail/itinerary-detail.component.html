@@ -2,12 +2,12 @@
   <main class="prose prose-slate prose-headings:text-slate-600 max-w-none">
     <p>
       Distance: <strong>{{geolocations$ | async | distance | number:'1.2-2'}}m</strong><br>
-      Duration: <strong>{{geolocations$ | async | duration}}</strong>
+      Duration: <strong>{{geolocations$ | async | geolocationToDuration}}</strong>
     </p>
     <p>{{(itinerary$ | async)?.description}}</p>
   </main>
   <h2 class="text-slate-600 text-xl mb-2 mt-5">Location Historic</h2>
-  <h2 class="text-slate-600 text-sm mt-2">{{currentLocation?.timestamp | date: 'MMMM dd/yyyy - hh:mm:ss':'':'en'}}</h2>
+  <h2 class="text-slate-600 text-sm mt-2">{{currentLocation?.timestamp | date: 'MMMM dd/yyyy - HH:mm:ss':'':'en'}}</h2>
   <app-itinerary-location-slider
     [geolocations]="geolocations$ | async"
     (locationChange)="onLocationChange($event)"></app-itinerary-location-slider>

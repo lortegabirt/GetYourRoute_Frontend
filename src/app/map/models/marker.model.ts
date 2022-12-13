@@ -71,6 +71,7 @@ const violetMarker = {
 export const Markers = {
   redMarker,
   yellowMarker,
+  greenMarker,
 }
 
 export const poiMarker = (poiType: PoiEnum) => {

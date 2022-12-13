@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Page, PageRequest} from "../../shared/model/Page.model";
 import {PointOfInterest} from "../model/PointOfInterest";
 import {map, Observable} from "rxjs";
+import {poiMarker} from "../../map/models/marker.model";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,12 @@ export class PoiHttpService {
   }
 
   public getPointOfInterest(id: string): Observable<PointOfInterest> {
-    return this.http.get<PointOfInterest>(`${this.baseUrl}${this.path}id/${id}`);
+    return this.http.get<PointOfInterest>(`${this.baseUrl}${this.path}id/${id}`).pipe(
+      map(poi => {
+        poi.location.coordinates = poi.location.coordinates.reverse() as [number, number];
+        return poi;
+      })
+    );
   }
 
   private reverseCoordinates(page: Page<PointOfInterest>) {

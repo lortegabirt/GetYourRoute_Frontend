@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutModule} from "./layout/layout.module";
 import {globalErrorHandlerProvider, httpInterceptorProviders} from "./middleware";
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
 import {MAT_DATE_LOCALE} from "@angular/material/core";
 import {MarkdownModule} from "ngx-markdown";
 import {TitleCasePipe} from "@angular/common";
@@ -16,13 +16,13 @@ import {TitleCasePipe} from "@angular/common";
     AppComponent,
     HomeComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        LayoutModule,
-        MarkdownModule.forRoot(),
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MarkdownModule.forRoot(),
+  ],
   providers: [
     TitleCasePipe,
     globalErrorHandlerProvider,

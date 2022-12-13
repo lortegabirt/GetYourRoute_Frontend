@@ -1,0 +1,10 @@
+<app-view-wrapper [title]="(poi$ | async)?.name">
+  <main class="prose prose-slate prose-headings:text-slate-600 max-w-none">
+    <p>{{(poi$ | async)?.type}}</p>
+  </main>
+  <div class="border border-slate-500 shadow-xl">
+    <app-map [extraLayers]="marker$ | async"
+             [fitBounds]="location | latLng"></app-map>
+  </div>
+  <button mat-button color="primary" (click)="onCenter()">Center on POI</button>
+</app-view-wrapper>

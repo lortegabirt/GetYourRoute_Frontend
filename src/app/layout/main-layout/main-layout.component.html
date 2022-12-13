@@ -6,6 +6,7 @@
       </a>
       <nav class="inline-block ml-5 space-x-4" *appAuthenticated>
         <a class="hover:underline font-sans" [routerLink]="['', 'itineraries']">Itineraries</a>
+        <a class="hover:underline font-sans" [routerLink]="['', 'points-of-interest']">Points of Interest</a>
       </nav>
       <ng-container *ngIf="!!(session$ | async)">
         <button mat-icon-button

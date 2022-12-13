@@ -58,7 +58,7 @@ export class ItinerariesComponent implements OnInit, OnDestroy {
   }
 
   onDetail(itinerary: Itinerary) {
-    this.router.navigate(['itineraries', itinerary.id])
+    this.router.navigate(['itineraries', itinerary.id]);
   }
 
   onEdit(itinerary: Itinerary) {

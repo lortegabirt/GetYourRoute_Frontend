@@ -4,7 +4,7 @@ import intervalToDuration from 'date-fns/intervalToDuration'
 import {formatDuration} from "date-fns";
 
 @Pipe({
-  name: 'duration'
+  name: 'geolocationToDuration'
 })
 export class DurationPipe implements PipeTransform {
 

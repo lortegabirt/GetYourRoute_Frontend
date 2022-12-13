@@ -1,0 +1,7 @@
+<app-view-wrapper [title]="'Points of interest'">
+  <app-poi-table [dataSource]="pois$ | async"
+                 (detail)="onDetail($event)"
+                 (page)="onPage($event)"
+                 class="drop-shadow">
+  </app-poi-table>
+</app-view-wrapper>
