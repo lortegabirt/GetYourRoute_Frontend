@@ -10,6 +10,7 @@ import {PointOfInterestLayerService} from "../../service/poi-layer.service";
 import {PoiHttpService} from "../../../point-of-interest/service/poi-http.service";
 import {PointOfInterest} from "../../../point-of-interest/model/PointOfInterest";
 import {MapEventsService} from "../../service/map-events.service";
+import {Box, GeolocationContextService} from "../../../geolocation/service/geolocation-context.service";
 
 @Component({
   selector: 'app-itinerary-detail',
@@ -22,13 +23,21 @@ export class ItineraryDetailComponent implements OnInit {
   itinerary$: Observable<Itinerary>;
   geolocations$: Observable<Geolocation[]> = of([]);
   pointsOfInterest$: Observable<PointOfInterest[]> = of([]);
-  currentLocation: Geolocation = {itineraryId: '', userId: '', timestamp: null, location: {type: "Point", coordinates: [1, 1]}};
+  currentLocation: Geolocation = {
+    itineraryId: '',
+    userId: '',
+    timestamp: null,
+    location: {type: "Point", coordinates: [1, 1]}
+  };
+  influenceBox$: Observable<Box>;
 
   constructor(private route: ActivatedRoute,
               private mapEventsService: MapEventsService,
               private pointOfInterestHttpService: PoiHttpService,
               private geolocationHttpService: GeolocationHttpService,
-              private itineraryHttpService: ItinerariesHttpService) { }
+              private geolocationContext: GeolocationContextService,
+              private itineraryHttpService: ItinerariesHttpService) {
+  }
 
   ngOnInit(): void {
     this.itinerary$ = this.route.params.pipe(
@@ -41,7 +50,10 @@ export class ItineraryDetailComponent implements OnInit {
       tap(list => list.length && (this.currentLocation = list[0])),
       shareReplay()
     );
-    this.pointsOfInterest$ = this.pointOfInterestHttpService.getPointsOfInterest().pipe(
+    this.influenceBox$ = this.geolocations$.pipe(
+      map(geolocations => this.geolocationContext.toInfluenceBox(geolocations)));
+    this.pointsOfInterest$ = this.influenceBox$.pipe(
+      switchMap(boundingBox => this.pointOfInterestHttpService.getPointsOfInterest(boundingBox)),
       map(page => page.content),
       shareReplay(),
     );

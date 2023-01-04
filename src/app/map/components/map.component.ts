@@ -31,13 +31,13 @@ export class MapComponent implements OnInit {
   @Input() overlays = {};
 
   heatmapLayer = new HeatmapOverlay({
-    radius: .0002,
+    radius: 6,
     maxOpacity: 0.5,
-    scaleRadius: true,
+    scaleRadius: false,
     useLocalExtrema: true,
     latField: 'lat',
     lngField: 'lng',
-    valueField: 'count'
+    valueField: 'count',
   });
 
   maps = {
