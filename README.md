@@ -53,29 +53,29 @@ para poder verlas a posteriori en el mapa de visualización.
 
 ### Front end 
 
-#### Angular
+#### - Angular
 
 Para la parte web se usa este framework por las ventajas que ofrece en el desarrollo de aplicaciones web
 
-#### Ionic
+#### - Ionic
 
 Para la parte móvil se usa este framework ya que permite el desarrollo de una aplicación tanto para iOS como para Android, además dispone de componentes visuales que se adaptan a cada uno de ellos. 
 
 ### Back end
 
-#### Spring Boot
+#### - Spring Boot
 
 Se ha elegido este framework por la facilidad que ofrece en el desarrollo de los servicios REST y en el uso del API MongoDB para obtener y persistir los datos.
 
 ### Base de datos
 
-#### MongoDB
+#### - MongoDB
 
 En este tipo de base de datos se permite almacenar objetos de tipo GeoJSON que son necesarios para el tipo de aplicación que se ha definido.
 
 ### APIs
 
-#### Open Data Euskadi
+#### - Open Data Euskadi
 
 La aplicación obtiene datos de Open Data Euskadi como restaurantes, casas rurales y etc.. que luego utiliza la aplicación para visualizarlos en el mapa.
 
