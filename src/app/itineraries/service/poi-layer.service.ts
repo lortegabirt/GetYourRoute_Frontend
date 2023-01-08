@@ -17,6 +17,7 @@ export class PointOfInterestLayerService implements OnDestroy{
 
   public setPointsOfInterest(poiList: PointOfInterest[]) {
     const container: {[key: string]: LayerGroup} = Object.values(PoiEnum)
+      .filter(type => type.length)
       .map(type => ({[this.titleCasePipe.transform(type)]: layerGroup()}))
       .reduce((acc, val) => ({...acc, ...val}));
 

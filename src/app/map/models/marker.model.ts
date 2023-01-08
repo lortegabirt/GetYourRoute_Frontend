@@ -78,5 +78,6 @@ export const poiMarker = (poiType: PoiEnum) => {
   switch (poiType) {
     case PoiEnum.ACCOMMODATION: return yellowMarker
     case PoiEnum.RESTAURANT: return greenMarker
+    case PoiEnum.ALL: return greenMarker
   }
 }

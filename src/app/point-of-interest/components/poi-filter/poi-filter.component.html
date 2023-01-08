@@ -1,0 +1,22 @@
+<div class="grid grid-cols-6">
+  <mat-form-field appearance="standard" class="col-span-2">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput [(ngModel)]="name">
+  </mat-form-field>
+  <mat-form-field appearance="standard" class="col-span-2 ml-4">
+    <mat-label>Type</mat-label>
+    <mat-select placeholder="Type" [(ngModel)]="type">
+      <mat-option *ngFor="let type of typeOptions" [value]="type.value">
+        {{ type.key }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <button mat-icon-button class="icon-button left text-slate-500" (click)="onFilter()">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <button mat-icon-button class="icon-button text-slate-500" (click)="onClear()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

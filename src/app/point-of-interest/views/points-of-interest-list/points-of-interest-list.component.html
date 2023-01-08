@@ -1,4 +1,5 @@
 <app-view-wrapper [title]="'Points of interest'">
+  <app-poi-filter (filter)="onFilter($event)"></app-poi-filter>
   <app-poi-table [dataSource]="pois$ | async"
                  (detail)="onDetail($event)"
                  (page)="onPage($event)"

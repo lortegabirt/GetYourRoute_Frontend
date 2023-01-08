@@ -11,4 +11,5 @@ export interface PointOfInterest {
 export enum PoiEnum {
   ACCOMMODATION = 'ACCOMMODATION',
   RESTAURANT = 'RESTAURANT',
+  ALL = '',
 }

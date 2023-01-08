@@ -3,12 +3,6 @@ import * as L from 'leaflet';
 
 declare var HeatmapOverlay: any;
 
-export interface CustomMarker {
-  id: string;
-  options: L.MarkerOptions;
-  location: [number, number];
-}
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',

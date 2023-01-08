@@ -39,6 +39,10 @@ export class PointsOfInterestListComponent implements OnInit, OnDestroy {
     this.pageRequest$.next({size: $event.pageSize, page: $event.pageIndex})
   }
 
+  onFilter(filter: { name: string }) {
+    this.pageRequest$.next(filter);
+  }
+
   private loadData(params: PageRequest) {
     this.pois$ = this.poiHttpService.getPointsOfInterest(params);
   }
